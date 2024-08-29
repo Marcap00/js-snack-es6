@@ -38,13 +38,15 @@ Generiamo e stampiamo in console la lista per i segnaposto
 #    place: '3',
 #    },
 #    ]
-
+3- Per creare un'array partendo da un'altro array potremmo usare il metodo degli array .map()
 */
 
 
 
-
-const guestList = ['Brad Pitt',
+// # Fase di preparazione
+// Preparo l'array con i nomi degli invitati
+const guestList = [
+    'Brad Pitt',
     'Johnny Depp',
     'Lady Gaga',
     'Cristiano Ronaldo',
@@ -54,4 +56,35 @@ const guestList = ['Brad Pitt',
     'Amal Clooney',
     'Fedez',
     'Amadeus',
-    'Fiorello'];
+    'Fiorello'
+];
+console.table(guestList);
+
+// Preparo la variabile con il nome del tavolo
+const tableName = 'Tavolo Vip';
+
+// # Fase di elaborazione
+// Creo l'array degli oggetti della lista degli invitati formattata partendo dall'array della lista delle nomi degli invitati
+const formattedGuestList = guestList.map((guest, i) => {
+    return {
+        tableName,
+        guest,
+        place: ++i
+    }
+})
+console.table(formattedGuestList);
+
+// # Fase di output
+// Per ogni oggetto dell'array stampiamo il risultato con le informazioni formattate
+formattedGuestList.forEach(formattedGuest => {
+    // Destrutturiamo l'oggetto dell'array per estrapolare le proprietà e assegnarle a una variabile che le rappresenta
+    const { tableName, guest, place } = formattedGuest;
+    // Formattiamo le informazioni sull'ospite in console
+    console.log(`
+        === GUEST ${place} ===
+
+        Nome Tavolo: ${tableName};
+        Nome Ospite: ${guest};
+        Posto occupato: ${place}
+    `)
+})
