@@ -32,16 +32,29 @@ const roadBikes = [
 // Destrutturo il primo oggeto dell'array
 const [firstBike] = roadBikes;
 // # Fase di elaborazione
+
+// $ METODO FILTER
 // Utilizziamo il metodo filter per creare un array filtrando quella con il peso minore
 // Dichiaro il primo oggetto dell'array (la "prima" bike) la più leggera
-let lightest = firstBike;
+
+// let lightest = firstBike;
+
 // Faccio il confronto con filter
-const lightestBike = roadBikes.filter(bike => lightest = lightest.weight < bike.weight ? lightest : bike);
-console.log(lightest);
+
+// const lightestBike = roadBikes.filter(bike => lightest = lightest.weight < bike.weight ? lightest : bike);
+// console.log(lightest);
+
+// $ METODO REDUCE
+// Utilizziamo il metodo reduce 
+const lightestBike = roadBikes.reduce((lightest, bike) => {
+    return lightest = lightest.weight < bike.weight ? lightest : bike;
+}, firstBike)
+
+console.table(lightestBike);
 
 // # Fase di output
 // Destrutturo l'oggetto lightest
-const { name, weight } = lightest;
+const { name, weight } = lightestBike;
 console.log(`
     La bicicletta da corsa più leggera è:
         ${name} kg: ${weight}
