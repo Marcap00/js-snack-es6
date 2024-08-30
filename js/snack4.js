@@ -11,6 +11,13 @@
 Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
 */
 
+// # Funzioni
+// Funzione che stampa in console il risultato
+const logResult = ({ nome, falliSubiti }) => {
+    console.log(`${nome} || falli subiti: ${falliSubiti}`)
+}
+
+
 // # Fase di preparazione
 // Creo l'array di partenza delle squadre
 const listTeams = [
@@ -50,23 +57,16 @@ console.table(listTeams);
 
 // # Fase di elaborazione
 // Inseriamo all'interno delle chiavi degli oggetti dell'array i valori con una funzione random number
-const formattedListTeams = listTeams.map(({ nome }) => {
-    return { nome, puntiFatti: getRandomNumber(50, 100), falliSubiti: getRandomNumber(1, 50) };
-})
+const formattedListTeams = listTeams.map(({ nome }) => ({ nome, puntiFatti: getRandomNumber(50, 100), falliSubiti: getRandomNumber(1, 50) }));
 
 console.table(formattedListTeams);
 
 // Creiamo un array di oggetti delle squadre con solo le proprietò nome e falli subiti
-const withoutPuntiFatti = formattedListTeams.map(({ nome, falliSubiti }) => {
-    return { nome, falliSubiti };
-})
+const withoutPuntiFatti = formattedListTeams.map(({ nome, falliSubiti }) => ({ nome, falliSubiti }));
 
 console.table(withoutPuntiFatti);
 
 // # Fase di output
 // Stampiamo la lista delle squadre con i falli subiti in console
 console.log('Classifica:')
-withoutPuntiFatti.forEach(team => {
-    const { nome, falliSubiti } = team;
-    console.log(`${nome} || falli subiti: ${falliSubiti}`)
-});
+withoutPuntiFatti.forEach(logResult);
