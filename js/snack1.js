@@ -65,13 +65,7 @@ const tableName = 'Tavolo Vip';
 
 // # Fase di elaborazione
 // Creo l'array degli oggetti della lista degli invitati formattata partendo dall'array della lista delle nomi degli invitati
-const formattedGuestList = guestList.map((guest, i) => {
-    return {
-        tableName,
-        guest,
-        place: ++i
-    }
-})
+const formattedGuestList = guestList.map((guest, i) => ({ tableName, guest, place: ++i }));
 console.table(formattedGuestList);
 
 // # Fase di output
