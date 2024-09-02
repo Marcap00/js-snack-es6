@@ -22,8 +22,20 @@ const persone = [
 console.table(persone);
 // const authorizedToDrive = []
 persone.forEach((persona) => {
-    persona.frase = `${persona.nome} ${persona.cognome} ha ${persona.età} anni e può guidare`;
+    /* if (persona.età >= 18) {
+        persona.frase = `${persona.nome} ${persona.cognome} ha ${persona.età} anni e può guidare`;
+
+    } else {
+        persona.frase = `${persona.nome} ${persona.cognome} ha ${persona.età} anni e non può guidare`;
+
+    } */
+    const not = persona.età >= 18 ? '' : 'non';
+    persona.frase = persona.età >= 18 ? `${persona.nome} ${persona.cognome} ha ${persona.età} anni e può guidare` : `${persona.nome} ${persona.cognome} ha ${persona.età} anni e ${not} può guidare`;
     console.log(persona.frase)
 })
+
+
+
+
 
 console.table(persone);
